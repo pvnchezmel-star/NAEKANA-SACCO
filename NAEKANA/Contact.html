@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naekana Sacco · Contact Us</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f5f0;
+            color: #1e2b1e;
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ---------- HEADER ---------- */
+        .header {
+            background: linear-gradient(135deg, #0b3b1f 0%, #1e6b34 100%);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 8px 20px rgba(0, 40, 0, 0.15);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-placeholder {
+            background: #f5c542;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.6rem;
+            color: #0b3b1f;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border: 2px solid #ffe28a;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .logo-text .subhead {
+            font-size: 0.8rem;
+            font-weight: 400;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .subhead i {
+            font-size: 0.7rem;
+            color: #f5c542;
+        }
+
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.4rem 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-menu a i {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .nav-menu a:hover {
+            border-bottom-color: #f5c542;
+            color: #f5c542;
+        }
+
+        /* ---------- MAIN CONTENT ---------- */
+        .page-wrapper {
+            max-width: 1100px;
+            margin: 2rem auto 3rem auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+
+        .page-title {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #0b3b1f;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .page-title i {
+            color: #1e6b34;
+        }
+
+        .page-subtitle {
+            font-size: 1.15rem;
+            color: #3d5a3d;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #e4f0e4;
+            padding: 0.8rem 1.4rem;
+            border-radius: 60px;
+            width: fit-content;
+        }
+
+        .page-subtitle i {
+            color: #1e6b34;
+        }
+
+        /* contact info cards */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 28px;
+            padding: 2rem 1.8rem;
+            text-align: center;
+            box-shadow: 0 15px 30px -10px rgba(0, 60, 0, 0.1);
+            border: 1px solid #d9e8d9;
+            transition: 0.25s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 22px 35px -10px rgba(0, 60, 0, 0.18);
+        }
+
+        .contact-icon {
+            background: #e4f0e4;
+            width: 70px;
+            height: 70px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+            font-size: 1.8rem;
+            color: #1e6b34;
+            transition: 0.2s;
+        }
+
+        .contact-card:hover .contact-icon {
+            background: #1e6b34;
+            color: white;
+        }
+
+        .contact-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0b3b1f;
+            margin-bottom: 0.6rem;
+        }
+
+        .contact-card p {
+            font-size: 0.95rem;
+            color: #4a6a4a;
+            line-height: 1.6;
+            margin-bottom: 0.4rem;
+        }
+
+        .contact-card a {
+            color: #1e6b34;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .contact-card a:hover {
+            color: #f5c542;
+        }
+
+        /* form + info split */
+        .contact-split {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        @media (max-width: 850px) {
+            .contact-split {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-card {
+            background: white;
+            border-radius: 32px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 30px -10px rgba(0, 60, 0, 0.1);
+            border: 1px solid #d9e8d9;
+        }
+
+        .form-card h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #0b3b1f;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 3px solid #e4f0e4;
+            padding-bottom: 0.8rem;
+        }
+
+        .form-card h2 i {
+            color: #1e6b34;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: #2a3f2a;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .form-group label i {
+            color: #1e6b34;
+            font-size: 0.9rem;
+            width: 18px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.85rem 1rem;
+            border-radius: 16px;
+            border: 1.5px solid #d0e0d0;
+            background: #f9fdf9;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: #1e2b1e;
+            transition: 0.2s;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #1e6b34;
+            box-shadow: 0 0 0 4px rgba(30, 107, 52, 0.15);
+            background: white;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 1rem 2.5rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            text-decoration: none;
+            transition: 0.25s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: #1e6b34;
+            color: white;
+            box-shadow: 0 10px 20px -5px rgba(30, 107, 52, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: #155a2a;
+            transform: translateY(-3px);
+            box-shadow: 0 16px 28px -6px rgba(30, 107, 52, 0.5);
+        }
+
+        /* office info card */
+        .office-card {
+            background: linear-gradient(135deg, #0b3b1f 0%, #1e6b34 100%);
+            border-radius: 32px;
+            padding: 2.5rem;
+            color: white;
+            box-shadow: 0 20px 30px -10px rgba(0, 60, 0, 0.3);
+        }
+
+        .office-card h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .office-card h2 i {
+            color: #f5c542;
+        }
+
+        .office-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 1.4rem;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 1rem 1.2rem;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .office-item i {
+            color: #f5c542;
+            font-size: 1.2rem;
+            margin-top: 2px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .office-item .label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            opacity: 0.75;
+            margin-bottom: 0.2rem;
+        }
+
+        .office-item .value {
+            font-size: 1rem;
+            font-weight: 500;
+            opacity: 0.98;
+        }
+
+        .office-item .value a {
+            color: #f5c542;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .office-item .value a:hover {
+            text-decoration: underline;
+        }
+
+        .social-row {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            background: rgba(255, 255, 255, 0.12);
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .social-btn:hover {
+            background: #f5c542;
+            color: #0b3b1f;
+            transform: translateY(-4px);
+        }
+
+        /* map placeholder */
+        .map-placeholder {
+            background: #d9e8d9;
+            border-radius: 24px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #1e6b34;
+            margin-top: 2rem;
+            border: 1px dashed #a0c0a0;
+        }
+
+        .map-placeholder i {
+            font-size: 3rem;
+            opacity: 0.6;
+            margin-bottom: 0.6rem;
+        }
+
+        .map-placeholder span {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #3d5a3d;
+        }
+
+        /* CTA */
+        .cta-box {
+            background: #1e3d1e;
+            border-radius: 32px;
+            padding: 2.5rem;
+            margin-top: 2.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            background-image: radial-gradient(circle at 20% 30%, #2a5e2a 0%, #0e2b0e 100%);
+        }
+
+        .cta-box h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cta-box h3 i {
+            color: #f5c542;
+        }
+
+        .btn-gold {
+            background: #f5c542;
+            color: #1e3d1e;
+            box-shadow: 0 10px 20px -5px rgba(245, 197, 66, 0.4);
+        }
+
+        .btn-gold:hover {
+            background: #ffd95c;
+            transform: translateY(-3px);
+            box-shadow: 0 16px 28px -6px rgba(245, 197, 66, 0.5);
+        }
+
+        /* footer */
+        .footer {
+            background: #0a1f0a;
+            color: #e0f0e0;
+            padding: 2.5rem 2rem 1.5rem 2rem;
+            margin-top: auto;
+            border-top: 6px solid #f5c542;
+        }
+
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .footer-col h5 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #f5c542;
+            font-weight: 600;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-col a {
+            color: #c8e0c8;
+            text-decoration: none;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-col a:hover {
+            color: #f5c542;
+            transform: translateX(4px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #2a4a2a;
+            font-size: 0.9rem;
+            color: #a0b8a0;
+        }
+
+        .footer-bottom i {
+            color: #f5c542;
+        }
+
+        /* responsive */
+        @media (max-width: 750px) {
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .nav-menu ul {
+                justify-content: center;
+                gap: 1.3rem;
+            }
+
+            .logo-area {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .form-card {
+                padding: 1.5rem;
+            }
+
+            .office-card {
+                padding: 1.5rem;
+            }
+
+            .cta-box {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo-area">
+            <div class="logo-placeholder">N</div>
+            <div class="logo-text">
+                <h1>NAEKANA SACCO</h1>
+                <div class="subhead">
+                    <i class="fas fa-bus"></i> Under Peter Saigilu management
+                </div>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="Index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="Services.html"><i class="fas fa-cogs"></i> Services</a></li>
+                <li><a href="About.html"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="Payment.html"><i class="fas fa-credit-card"></i> Payment</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="page-wrapper">
+
+        <h1 class="page-title">
+            <i class="fas fa-headset"></i> Contact Us
+        </h1>
+
+        <div class="page-subtitle">
+            <i class="fas fa-comments"></i> We're here to help — reach out anytime
+        </div>
+
+        <!-- QUICK CONTACT CARDS -->
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                <h3>Call Us</h3>
+                <p>Talk to our customer care team</p>
+                <p><a href="tel:+254700807964">+254 700 807 964</a></p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                <h3>Email Us</h3>
+                <p>We'll respond within 24 hours</p>
+                <p><a href="mailto:info@naekana.co.ke">info@naekana.co.ke</a></p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <h3>Visit Us</h3>
+                <p>Route 134, Laset town</p>
+                <p>Next to Kahiu's Hardware</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon"><i class="fas fa-globe"></i></div>
+                <h3>Online</h3>
+                <p>Reach us via our website</p>
+                <p><a href="Index.html">www.naekana.co.ke</a></p>
+            </div>
+        </div>
+
+        <!-- FORM + OFFICE INFO -->
+        <div class="contact-split">
+
+            <!-- CONTACT FORM -->
+            <div class="form-card">
+                <h2><i class="fas fa-paper-plane"></i> Send us a message</h2>
+                <form id="contactForm" onsubmit="event.preventDefault(); sendMessage();">
+                    <div class="form-group">
+                        <label for="contactName"><i class="fas fa-user-circle"></i> Full name</label>
+                        <input type="text" id="contactName" placeholder="e.g. Jane Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail"><i class="fas fa-envelope"></i> Email address</label>
+                        <input type="email" id="contactEmail" placeholder="e.g. jane@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactPhone"><i class="fas fa-phone-alt"></i> Phone number</label>
+                        <input type="tel" id="contactPhone" placeholder="e.g. 0712 345 678">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactSubject"><i class="fas fa-tag"></i> Subject</label>
+                        <input type="text" id="contactSubject" placeholder="e.g. Booking enquiry" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage"><i class="fas fa-comment-dots"></i> Message</label>
+                        <textarea id="contactMessage" placeholder="Type your message here..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Send message
+                    </button>
+                </form>
+            </div>
+
+            <!-- OFFICE INFO -->
+            <div class="office-card">
+                <h2><i class="fas fa-building"></i> Head Office</h2>
+
+                <div class="office-item">
+                    <i class="fas fa-location-dot"></i>
+                    <div>
+                        <div class="label">Address</div>
+                        <div class="value">Route 134, Laset town<br>Next to Kahiu's Hardware, along Tarakea–Rombo junction</div>
+                    </div>
+                </div>
+
+                <div class="office-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <div class="label">Phone</div>
+                        <div class="value"><a href="tel:+254700807964">+254 700 807 964</a></div>
+                    </div>
+                </div>
+
+                <div class="office-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <div class="label">Email</div>
+                        <div class="value"><a href="mailto:info@naekana.co.ke">info@naekana.co.ke</a></div>
+                    </div>
+                </div>
+
+                <div class="office-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <div class="label">Working Hours</div>
+                        <div class="value">Mon – Sat: 5:00 AM – 9:00 PM<br>Sun: 6:00 AM – 8:00 PM</div>
+                    </div>
+                </div>
+
+                <div class="social-row">
+                    <a href="#" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- MAP PLACEHOLDER -->
+        <div class="map-placeholder">
+            <i class="fas fa-map"></i>
+            <span>Map location — Route 134, Laset town</span>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-box">
+            <h3><i class="fas fa-ticket-alt"></i> Ready to book your journey or send a parcel?</h3>
+            <a href="Payment.html" class="btn btn-gold"><i class="fas fa-arrow-right"></i> Go to Booking</a>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h5><i class="fas fa-bus"></i> NAEKANA SACCO</h5>
+                <ul>
+                    <li><a href="About.html"><i class="fas fa-angle-right"></i> About us</a></li>
+                    <li><a href="Services.html"><i class="fas fa-angle-right"></i> Services</a></li>
+                    <li><a href="Payment.html"><i class="fas fa-angle-right"></i> Payment</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5><i class="fas fa-life-ring"></i> Support</h5>
+                <ul>
+                    <li><a href="Contact.html"><i class="fas fa-angle-right"></i> Contact</a></li>
+                    <li><a href="Help.html"><i class="fas fa-angle-right"></i> Help center</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5><i class="fas fa-map-pin"></i> Visit us</h5>
+                <ul>
+                    <li><i class="fas fa-location-dot"></i> Laset town, Route 134</li>
+                    <li><i class="fas fa-phone"></i> +254 700 807 964</li>
+                    <li><i class="fas fa-envelope"></i> info@naekana.co.ke</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p><i class="far fa-copyright"></i> 2025 Naekana Sacco — All rights reserved. Under Peter Saigilu management.</p>
+        </div>
+    </footer>
+
+    <script>
+        function sendMessage() {
+            const name = document.getElementById('contactName').value.trim();
+            const email = document.getElementById('contactEmail').value.trim();
+            const phone = document.getElementById('contactPhone').value.trim();
+            const subject = document.getElementById('contactSubject').value.trim();
+            const message = document.getElementById('contactMessage').value.trim();
+
+            if (!name || !email || !subject || !message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+
+            alert(`✅ Message sent successfully!\n\n` +
+                  `Name: ${name}\n` +
+                  `Email: ${email}\n` +
+                  (phone ? `Phone: ${phone}\n` : '') +
+                  `Subject: ${subject}\n\n` +
+                  `Thank you for reaching out to Naekana Sacco. Our team will get back to you within 24 hours.`);
+
+            document.getElementById('contactForm').reset();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naekana Sacco · Services</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f5f0;
+            color: #1e2b1e;
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ---------- HEADER (consistent with homepage) ---------- */
+        .header {
+            background: linear-gradient(135deg, #0b3b1f 0%, #1e6b34 100%);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 8px 20px rgba(0, 40, 0, 0.15);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-placeholder {
+            background: #f5c542;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.6rem;
+            color: #0b3b1f;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border: 2px solid #ffe28a;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .logo-text .subhead {
+            font-size: 0.8rem;
+            font-weight: 400;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .subhead i {
+            font-size: 0.7rem;
+            color: #f5c542;
+        }
+
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.4rem 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-menu a i {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .nav-menu a:hover {
+            border-bottom-color: #f5c542;
+            color: #f5c542;
+        }
+
+        /* ---------- MAIN CONTENT ---------- */
+        .page-wrapper {
+            max-width: 1100px;
+            margin: 2rem auto 3rem auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+
+        .page-title {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #0b3b1f;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .page-title i {
+            color: #1e6b34;
+        }
+
+        .page-subtitle {
+            font-size: 1.15rem;
+            color: #3d5a3d;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #e4f0e4;
+            padding: 0.8rem 1.4rem;
+            border-radius: 60px;
+            width: fit-content;
+        }
+
+        .page-subtitle i {
+            color: #1e6b34;
+        }
+
+        /* service cards */
+        .service-card {
+            background: white;
+            border-radius: 32px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 15px 30px -10px rgba(0, 60, 0, 0.1);
+            border: 1px solid #d9e8d9;
+            transition: 0.2s ease;
+        }
+
+        .service-card:hover {
+            box-shadow: 0 22px 35px -10px rgba(0, 60, 0, 0.18);
+        }
+
+        .service-card h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0b3b1f;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border-bottom: 3px solid #e4f0e4;
+            padding-bottom: 0.8rem;
+        }
+
+        .service-card h2 i {
+            color: #1e6b34;
+            font-size: 1.6rem;
+        }
+
+        .service-card p {
+            font-size: 1.05rem;
+            color: #2a3f2a;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .service-card .highlight-box {
+            background: #f2faf2;
+            border-left: 6px solid #1e6b34;
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
+            margin: 1.2rem 0;
+            font-size: 1rem;
+            color: #1e3d1e;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .service-card .highlight-box i {
+            color: #1e6b34;
+            font-size: 1.2rem;
+            margin-top: 2px;
+        }
+
+        /* restriction list */
+        .restriction-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .restriction-list li {
+            background: #fff6f6;
+            border: 1px solid #ffd0d0;
+            border-radius: 16px;
+            padding: 1rem 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+            color: #8b2e2e;
+        }
+
+        .restriction-list li i {
+            color: #c0392b;
+            font-size: 1.2rem;
+        }
+
+        /* routes */
+        .routes-section {
+            background: linear-gradient(135deg, #0b3b1f 0%, #1e6b34 100%);
+            border-radius: 32px;
+            padding: 2.5rem;
+            color: white;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 30px -10px rgba(0, 60, 0, 0.3);
+        }
+
+        .routes-section h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .routes-section h2 i {
+            color: #f5c542;
+        }
+
+        .routes-section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 1.5rem 0 1rem 0;
+            color: #f5c542;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .routes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.8rem;
+            margin: 1rem 0 1.5rem 0;
+        }
+
+        .route-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+            padding: 0.75rem 1.2rem;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: 0.2s;
+        }
+
+        .route-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .route-item i {
+            color: #f5c542;
+            font-size: 0.9rem;
+        }
+
+        .routes-section p {
+            font-size: 1.05rem;
+            opacity: 0.95;
+            line-height: 1.7;
+            margin-top: 0.5rem;
+        }
+
+        .routes-section .main-routes {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .routes-section .main-routes h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: #f5c542;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .routes-section .main-routes ul {
+            list-style: none;
+        }
+
+        .routes-section .main-routes li {
+            padding: 0.4rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.98rem;
+            opacity: 0.95;
+        }
+
+        .routes-section .main-routes li i {
+            color: #f5c542;
+            font-size: 0.8rem;
+        }
+
+        /* SACCO savings */
+        .sacco-info {
+            background: white;
+            border-radius: 32px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 30px -10px rgba(0, 60, 0, 0.1);
+            border: 1px solid #d9e8d9;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .sacco-info .text-content {
+            flex: 1 1 300px;
+        }
+
+        .sacco-info h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0b3b1f;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .sacco-info h2 i {
+            color: #1e6b34;
+        }
+
+        .sacco-info p {
+            font-size: 1.05rem;
+            color: #2a3f2a;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .sacco-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-item {
+            background: #f2faf2;
+            border-radius: 20px;
+            padding: 1.2rem 1.8rem;
+            text-align: center;
+            border: 1px solid #d0e8d0;
+            min-width: 140px;
+        }
+
+        .stat-item .number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0b3b1f;
+            line-height: 1.2;
+        }
+
+        .stat-item .label {
+            font-size: 0.85rem;
+            color: #4a6a4a;
+            font-weight: 500;
+        }
+
+        .sacco-info .icon-large {
+            font-size: 6rem;
+            color: #e4f0e4;
+            display: none;
+        }
+
+        @media (min-width: 700px) {
+            .sacco-info .icon-large {
+                display: block;
+            }
+        }
+
+        /* CTA */
+        .cta-box {
+            background: #1e3d1e;
+            border-radius: 32px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            background-image: radial-gradient(circle at 20% 30%, #2a5e2a 0%, #0e2b0e 100%);
+        }
+
+        .cta-box h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cta-box h3 i {
+            color: #f5c542;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 1rem 2.5rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            text-decoration: none;
+            transition: 0.25s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: #f5c542;
+            color: #1e3d1e;
+            box-shadow: 0 10px 20px -5px rgba(245, 197, 66, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: #ffd95c;
+            transform: translateY(-3px);
+            box-shadow: 0 16px 28px -6px rgba(245, 197, 66, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border-color: white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* footer */
+        .footer {
+            background: #0a1f0a;
+            color: #e0f0e0;
+            padding: 2.5rem 2rem 1.5rem 2rem;
+            margin-top: auto;
+            border-top: 6px solid #f5c542;
+        }
+
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .footer-col h5 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #f5c542;
+            font-weight: 600;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-col a {
+            color: #c8e0c8;
+            text-decoration: none;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-col a:hover {
+            color: #f5c542;
+            transform: translateX(4px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #2a4a2a;
+            font-size: 0.9rem;
+            color: #a0b8a0;
+        }
+
+        .footer-bottom i {
+            color: #f5c542;
+        }
+
+        /* responsive */
+        @media (max-width: 750px) {
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .nav-menu ul {
+                justify-content: center;
+                gap: 1.3rem;
+            }
+
+            .logo-area {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .routes-section {
+                padding: 1.5rem;
+            }
+
+            .sacco-info {
+                padding: 1.5rem;
+            }
+
+            .cta-box {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER (consistent with homepage) -->
+    <header class="header">
+        <div class="logo-area">
+            <div class="logo-placeholder">N</div>
+            <div class="logo-text">
+                <h1>NAEKANA SACCO</h1>
+                <div class="subhead">
+                    <i class="fas fa-bus"></i> Under Peter Saigilu management
+                </div>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="Index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="Services.html"><i class="fas fa-cogs"></i> Services</a></li>
+                <li><a href="About.html"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="Payment.html"><i class="fas fa-credit-card"></i> Payment</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="page-wrapper">
+
+        <h1 class="page-title">
+            <i class="fas fa-cogs"></i> Our Services
+        </h1>
+
+        <div class="page-subtitle">
+            <i class="fas fa-star"></i> Leading light in transport and logistics
+        </div>
+
+        <!-- TRANSPORT SERVICE -->
+        <div class="service-card">
+            <h2><i class="fas fa-bus"></i> Transport</h2>
+            <p>We offer reliable and comfortable transport services from Illasit and surrounding areas to different locations across Kenya and Tanzania. Our modern fleet ensures a safe and pleasant journey for all passengers.</p>
+            <div class="highlight-box">
+                <i class="fas fa-mobile-alt"></i>
+                <span>Book your seat easily online — choose your departure time and preferred vehicle, select the number of seats, make payment, and receive your e-receipt shortly.</span>
+            </div>
+            <p>Our experienced drivers and well-maintained vehicles guarantee punctuality and comfort on every trip.</p>
+        </div>
+
+        <!-- COURIER SERVICE -->
+        <div class="service-card">
+            <h2><i class="fas fa-box"></i> Courier Services</h2>
+            <p>Send and receive goods from different places around Kenya and Tanzania using Naekana courier services — not only cheap but also reliable. We handle your parcels with care and ensure timely delivery.</p>
+            <div class="highlight-box">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>For safety and regulatory compliance, we do <strong>not</strong> transport the following items:</span>
+            </div>
+            <ul class="restriction-list">
+                <li><i class="fas fa-paw"></i> Animals</li>
+                <li><i class="fas fa-flask"></i> All kinds of fertilizers</li>
+                <li><i class="fas fa-bomb"></i> Any kind of explosive</li>
+            </ul>
+        </div>
+
+        <!-- ROUTES SECTION -->
+        <div class="routes-section">
+            <h2><i class="fas fa-route"></i> Routes We Cover</h2>
+            <p>We offer transport services within several counties, connecting passengers and goods to key destinations across the region.</p>
+
+            <h3><i class="fas fa-map-marker-alt"></i> In Kajiado County, we cover:</h3>
+            <div class="routes-grid">
+                <div class="route-item"><i class="fas fa-circle"></i> Illasit</div>
+                <div class="route-item"><i class="fas fa-circle"></i> Oloitoktok</div>
+                <div class="route-item"><i class="fas fa-circle"></i> Kimana</div>
+                <div class="route-item"><i class="fas fa-circle"></i> Isinet</div>
+                <div class="route-item"><i class="fas fa-circle"></i> Imbirikani</div>
+                <div class="route-item"><i class="fas fa-circle"></i> Isinya</div>
+                <div class="route-item"><i class="fas fa-circle"></i> Kitengela</div>
+                <div class="route-item"><i class="fas fa-circle"></i> Namanga</div>
+                <div class="route-item"><i class="fas fa-circle"></i> Kisaju</div>
+            </div>
+
+            <div class="main-routes">
+                <h4><i class="fas fa-road"></i> Major routes include:</h4>
+                <ul>
+                    <li><i class="fas fa-arrow-right"></i> Nairobi – Kitengela – Isinya – Kajiado – Namanga</li>
+                    <li><i class="fas fa-arrow-right"></i> Nairobi – Mtito Andei – Voi – Mombasa</li>
+                    <li><i class="fas fa-arrow-right"></i> Nairobi – Emali – Loitoktok – Taveta – Voi – Mombasa</li>
+                    <li><i class="fas fa-arrow-right"></i> Nairobi – Mbumbuni – Wote</li>
+                </ul>
+            </div>
+
+            <p style="margin-top: 1.5rem;">Our network links Nairobi to over 12 destinations, including major towns in Kajiado, Makueni, Machakos, and Mombasa Counties.</p>
+        </div>
+
+        <!-- SACCO SAVINGS & LOANS -->
+        <div class="sacco-info">
+            <div class="text-content">
+                <h2><i class="fas fa-piggy-bank"></i> Savings & Loan Services</h2>
+                <p>The Sacco also offers savings and loan services to its members. According to the company website, the Sacco has recorded in excess of <strong>Ksh 155 million</strong> in member deposits.</p>
+                <p>Naekana Sacco offers long-term, emergency, development, and normal loans to members. The sum of the loan is dependent on the amount of savings.</p>
+                <div class="sacco-stats">
+                    <div class="stat-item">
+                        <div class="number">Ksh 155M+</div>
+                        <div class="label">Member deposits</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="number">4+</div>
+                        <div class="label">Loan types</div>
+                    </div>
+                </div>
+            </div>
+            <div class="icon-large">
+                <i class="fas fa-hand-holding-usd"></i>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-box">
+            <h3><i class="fas fa-headset"></i> Ready to travel or send a parcel?</h3>
+            <a href="Payment.html" class="btn btn-primary"><i class="fas fa-ticket-alt"></i> Book now</a>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h5><i class="fas fa-bus"></i> NAEKANA SACCO</h5>
+                <ul>
+                    <li><a href="About.html"><i class="fas fa-angle-right"></i> About us</a></li>
+                    <li><a href="Services.html"><i class="fas fa-angle-right"></i> Services</a></li>
+                    <li><a href="Payment.html"><i class="fas fa-angle-right"></i> Payment</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5><i class="fas fa-life-ring"></i> Support</h5>
+                <ul>
+                    <li><a href="Contact.html"><i class="fas fa-angle-right"></i> Contact</a></li>
+                    <li><a href="Help.html"><i class="fas fa-angle-right"></i> Help center</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5><i class="fas fa-map-pin"></i> Visit us</h5>
+                <ul>
+                    <li><i class="fas fa-location-dot"></i> Laset town, Route 134</li>
+                    <li><i class="fas fa-phone"></i> +254 700 123 456</li>
+                    <li><i class="fas fa-envelope"></i> info@naekana.co.ke</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p><i class="far fa-copyright"></i> 2025 Naekana Sacco — All rights reserved. Under Peter Saigilu management.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

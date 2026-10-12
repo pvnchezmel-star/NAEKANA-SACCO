@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naekana Sacco · Booking & Parcel</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f5f0;
+            color: #1e2b1e;
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ---------- HEADER ---------- */
+        .header {
+            background: linear-gradient(135deg, #0b3b1f 0%, #1e6b34 100%);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 8px 20px rgba(0, 40, 0, 0.15);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-placeholder {
+            background: #f5c542;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.6rem;
+            color: #0b3b1f;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border: 2px solid #ffe28a;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .logo-text .subhead {
+            font-size: 0.8rem;
+            font-weight: 400;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .subhead i {
+            font-size: 0.7rem;
+            color: #f5c542;
+        }
+
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.4rem 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-menu a i {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .nav-menu a:hover {
+            border-bottom-color: #f5c542;
+            color: #f5c542;
+        }
+
+        /* ---------- MAIN WRAPPER ---------- */
+        .booking-wrapper {
+            max-width: 1000px;
+            margin: 2rem auto 3rem auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+
+        .page-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0b3b1f;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .page-title i {
+            color: #1e6b34;
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: #3d5a3d;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #e4f0e4;
+            padding: 0.8rem 1.2rem;
+            border-radius: 50px;
+            width: fit-content;
+        }
+
+        .page-subtitle i {
+            color: #1e6b34;
+        }
+
+        /* ---------- SERVICE TOGGLE ---------- */
+        .service-toggle {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            background: white;
+            padding: 0.6rem;
+            border-radius: 60px;
+            box-shadow: 0 4px 12px rgba(0, 60, 0, 0.08);
+            border: 1px solid #d9e8d9;
+            width: fit-content;
+            flex-wrap: wrap;
+        }
+
+        .toggle-btn {
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            border: none;
+            background: transparent;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #3d5a3d;
+            cursor: pointer;
+            transition: 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toggle-btn i {
+            font-size: 1.1rem;
+        }
+
+        .toggle-btn.active {
+            background: #1e6b34;
+            color: white;
+            box-shadow: 0 6px 14px rgba(30, 107, 52, 0.35);
+        }
+
+        .toggle-btn:hover:not(.active) {
+            background: #e4f0e4;
+            color: #1e6b34;
+        }
+
+        /* ---------- FORM CARD ---------- */
+        .booking-card {
+            background: white;
+            border-radius: 32px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 35px -8px rgba(0, 60, 0, 0.15);
+            border: 1px solid #d9e8d9;
+        }
+
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .form-section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1e3d1e;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #e4f0e4;
+            padding-bottom: 0.6rem;
+        }
+
+        .form-section-title i {
+            color: #1e6b34;
+            font-size: 1.1rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: #2a3f2a;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .form-group label i {
+            color: #1e6b34;
+            font-size: 0.9rem;
+            width: 18px;
+        }
+
+        .form-group label .required-star {
+            color: #c0392b;
+            font-size: 1.1rem;
+            margin-left: 2px;
+        }
+
+        .form-group select,
+        .form-group input,
+        .form-group textarea {
+            padding: 0.85rem 1rem;
+            border-radius: 16px;
+            border: 1.5px solid #d0e0d0;
+            background: #f9fdf9;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: #1e2b1e;
+            transition: 0.2s;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        .form-group select {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231e6b34' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 16px;
+        }
+
+        .form-group select:hover,
+        .form-group input:hover,
+        .form-group textarea:hover {
+            border-color: #a0c0a0;
+        }
+
+        .form-group select:focus,
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #1e6b34;
+            box-shadow: 0 0 0 4px rgba(30, 107, 52, 0.15);
+            background: white;
+        }
+
+        /* price summary */
+        .price-summary {
+            background: #f2faf2;
+            border-radius: 24px;
+            padding: 1.5rem 2rem;
+            margin: 1.8rem 0 2rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px dashed #a0c0a0;
+        }
+
+        .price-summary .label {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #1e3d1e;
+        }
+
+        .price-summary .amount {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0b3b1f;
+            letter-spacing: -1px;
+        }
+
+        .price-note {
+            font-size: 0.85rem;
+            color: #5a7a5a;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 4px;
+        }
+
+        .price-note i {
+            color: #1e6b34;
+        }
+
+        /* buttons */
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 1rem 2.5rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            text-decoration: none;
+            transition: 0.25s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: #1e6b34;
+            color: white;
+            box-shadow: 0 10px 20px -5px rgba(30, 107, 52, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: #155a2a;
+            transform: translateY(-3px);
+            box-shadow: 0 16px 28px -6px rgba(30, 107, 52, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border-color: #1e6b34;
+            color: #1e6b34;
+        }
+
+        .btn-secondary:hover {
+            background: #e4f0e4;
+            transform: translateY(-3px);
+        }
+
+        /* info banner */
+        .info-banner {
+            background: #e9f2e9;
+            border-left: 6px solid #1e6b34;
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: #1e3d1e;
+        }
+
+        .info-banner i {
+            color: #1e6b34;
+            font-size: 1.2rem;
+            margin-top: 2px;
+        }
+
+        /* parcel note */
+        .parcel-note {
+            background: #fff8e7;
+            border-left: 6px solid #f5c542;
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
+            margin: 1rem 0 1.5rem 0;
+            font-size: 0.95rem;
+            color: #6b4e0a;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .parcel-note i {
+            color: #d4a017;
+            font-size: 1.2rem;
+            margin-top: 2px;
+        }
+
+        /* fare matrix panel (for admin/demo) */
+        .fare-panel {
+            background: #f7f9f7;
+            border-radius: 20px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.2rem 0 1.5rem 0;
+            border: 1px solid #d9e8d9;
+            font-size: 0.85rem;
+            color: #3d5a3d;
+        }
+
+        .fare-panel summary {
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #1e6b34;
+        }
+
+        .fare-panel summary i {
+            font-size: 0.9rem;
+        }
+
+        .fare-panel .fare-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.5rem 1rem;
+            margin-top: 1rem;
+        }
+
+        .fare-panel .fare-grid span {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.3rem 0.5rem;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #e4f0e4;
+        }
+
+        .fare-panel .fare-grid span strong {
+            color: #0b3b1f;
+        }
+
+        /* hidden */
+        .hidden {
+            display: none !important;
+        }
+
+        /* footer */
+        .footer {
+            background: #0a1f0a;
+            color: #e0f0e0;
+            padding: 2.5rem 2rem 1.5rem 2rem;
+            margin-top: auto;
+            border-top: 6px solid #f5c542;
+        }
+
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .footer-col h5 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #f5c542;
+            font-weight: 600;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-col a {
+            color: #c8e0c8;
+            text-decoration: none;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-col a:hover {
+            color: #f5c542;
+            transform: translateX(4px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #2a4a2a;
+            font-size: 0.9rem;
+            color: #a0b8a0;
+        }
+
+        .footer-bottom i {
+            color: #f5c542;
+        }
+
+        /* responsive */
+        @media (max-width: 750px) {
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .nav-menu ul {
+                justify-content: center;
+                gap: 1.3rem;
+            }
+
+            .logo-area {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .booking-card {
+                padding: 1.5rem;
+            }
+
+            .page-title {
+                font-size: 1.7rem;
+            }
+
+            .price-summary {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.8rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .service-toggle {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .toggle-btn {
+                flex: 1 1 40%;
+                justify-content: center;
+                padding: 0.8rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo-area">
+            <div class="logo-placeholder">N</div>
+            <div class="logo-text">
+                <h1>NAEKANA SACCO</h1>
+                <div class="subhead">
+                    <i class="fas fa-bus"></i> Under Peter Saigilu management
+                </div>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="Index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="Services.html"><i class="fas fa-cogs"></i> Services</a></li>
+                <li><a href="About.html"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="Payment.html"><i class="fas fa-credit-card"></i> Payment</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <div class="booking-wrapper">
+
+        <h1 class="page-title">
+            <i class="fas fa-ticket-alt"></i> Booking & Parcel
+        </h1>
+
+        <div class="page-subtitle">
+            <i class="fas fa-map-marker-alt"></i> Route 134 · Laset town, next to Kahiu's hardware
+        </div>
+
+        <!-- SERVICE TOGGLE -->
+        <div class="service-toggle">
+            <button class="toggle-btn active" id="btnPassenger" onclick="switchMode('passenger')">
+                <i class="fas fa-user"></i> Passenger Booking
+            </button>
+            <button class="toggle-btn" id="btnParcel" onclick="switchMode('parcel')">
+                <i class="fas fa-box"></i> Send a Parcel
+            </button>
+        </div>
+
+        <!-- info banner -->
+        <div class="info-banner">
+            <i class="fas fa-info-circle"></i>
+            <span id="infoText">Please select your travel details below. All bookings are subject to availability. Payment confirms your seat.</span>
+        </div>
+
+        <div class="booking-card">
+            <form id="bookingForm" onsubmit="event.preventDefault(); submitForm();">
+
+                <!-- ========== PASSENGER FORM ========== -->
+                <div id="passengerForm">
+                    <!-- TRIP DETAILS -->
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            <i class="fas fa-route"></i> Trip details
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="departure"><i class="fas fa-circle-dot"></i> Point of departure</label>
+                                <select id="departure" required>
+                                    <option value="" disabled selected>— select departure —</option>
+                                    <option>Illasit</option>
+                                    <option>Loitoktok</option>
+                                    <option>Kimana</option>
+                                    <option>Isinet</option>
+                                    <option>Isinya</option>
+                                    <option>Kitengela</option>
+                                    <option>Namanga</option>
+                                    <option>Mombasa</option>
+                                    <option>Moshi</option>
+                                    <option>Himo</option>
+                                    <option>Thika</option>
+                                    <option>Emali</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="destination"><i class="fas fa-flag-checkered"></i> Destination</label>
+                                <select id="destination" required>
+                                    <option value="" disabled selected>— select destination —</option>
+                                    <option>Nairobi</option>
+                                    <option>Mombasa</option>
+                                    <option>Kajiado</option>
+                                    <option>Isinya</option>
+                                    <option>Namanga</option>
+                                    <option>Loitoktok</option>
+                                    <option>Kimana</option>
+                                    <option>Emali</option>
+                                    <option>Kitengela</option>
+                                    <option>Himo</option>
+                                    <option>Moshi</option>
+                                    <option>Thika</option>
+                                    <option>Illasit</option>
+                                    <option>Isinet</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="departureTime"><i class="fas fa-clock"></i> Departure time</label>
+                                <select id="departureTime" required>
+                                    <option value="" disabled selected>— select time —</option>
+                                    <option>03:00 A.M</option>
+                                    <option>04:00 A.M</option>
+                                    <option>06:00 A.M</option>
+                                    <option>08:00 A.M</option>
+                                    <option>10:00 A.M</option>
+                                    <option>12:00 P.M</option>
+                                    <option>02:00 P.M</option>
+                                    <option>03:00 P.M</option>
+                                    <option>04:00 P.M</option>
+                                    <option>05:30 P.M</option>
+                                    <option>06:30 P.M</option>
+                                    <option>08:00 P.M</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="seats"><i class="fas fa-chair"></i> Number of seats</label>
+                                <select id="seats" required>
+                                    <option value="" disabled selected>— select seats —</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+                                    <option>13</option>
+                                    <option>14</option>
+                                    <option>15</option>
+                                    <option>16</option>
+                                    <option>17</option>
+                                    <option>18</option>
+                                    <option>19</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PASSENGER DETAILS -->
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            <i class="fas fa-user"></i> Passenger details
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="fullName"><i class="fas fa-user-circle"></i> Full name <span class="required-star">*</span></label>
+                                <input type="text" id="fullName" placeholder="e.g. Jane Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="passengerId"><i class="fas fa-id-card"></i> Passenger's ID number <span class="required-star">*</span></label>
+                                <input type="text" id="passengerId" placeholder="e.g. 12345678" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone"><i class="fas fa-phone-alt"></i> Phone number <span class="required-star">*</span></label>
+                                <input type="tel" id="phone" placeholder="e.g. 0712 345 678" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FARE MATRIX (for reference / admin) -->
+                    <details class="fare-panel">
+                        <summary><i class="fas fa-table"></i> View fare table (per seat)</summary>
+                        <div class="fare-grid" id="fareGrid">
+                            <!-- populated by JS -->
+                        </div>
+                    </details>
+
+                    <!-- PRICE SUMMARY -->
+                    <div class="price-summary">
+                        <div>
+                            <div class="label">Estimated total</div>
+                            <div class="price-note" id="fareNote"><i class="fas fa-info-circle"></i> Select departure and destination to see fare</div>
+                        </div>
+                        <div class="amount" id="priceDisplay">Ksh 0</div>
+                    </div>
+                </div>
+
+                <!-- ========== PARCEL FORM ========== -->
+                <div id="parcelForm" class="hidden">
+                    <!-- PARCEL ROUTE -->
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            <i class="fas fa-route"></i> Parcel route & details
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="parcelFrom"><i class="fas fa-circle-dot"></i> Sending from</label>
+                                <select id="parcelFrom" required>
+                                    <option value="" disabled selected>— select origin —</option>
+                                    <option>Illasit</option>
+                                    <option>Loitoktok</option>
+                                    <option>Kimana</option>
+                                    <option>Isinet</option>
+                                    <option>Isinya</option>
+                                    <option>Kitengela</option>
+                                    <option>Namanga</option>
+                                    <option>Mombasa</option>
+                                    <option>Moshi</option>
+                                    <option>Himo</option>
+                                    <option>Thika</option>
+                                    <option>Emali</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="parcelTo"><i class="fas fa-flag-checkered"></i> Sending to</label>
+                                <select id="parcelTo" required>
+                                    <option value="" disabled selected>— select destination —</option>
+                                    <option>Nairobi</option>
+                                    <option>Mombasa</option>
+                                    <option>Kajiado</option>
+                                    <option>Isinya</option>
+                                    <option>Namanga</option>
+                                    <option>Loitoktok</option>
+                                    <option>Kimana</option>
+                                    <option>Emali</option>
+                                    <option>Kitengela</option>
+                                    <option>Himo</option>
+                                    <option>Moshi</option>
+                                    <option>Thika</option>
+                                    <option>Illasit</option>
+                                    <option>Isinet</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="parcelWeight"><i class="fas fa-weight-hanging"></i> Weight (kg) <span class="required-star">*</span></label>
+                                <input type="number" id="parcelWeight" min="1" max="100" placeholder="e.g. 5" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="parcelType"><i class="fas fa-tag"></i> Parcel type <span class="required-star">*</span></label>
+                                <select id="parcelType" required>
+                                    <option value="" disabled selected>— select type —</option>
+                                    <option>Documents</option>
+                                    <option>Clothing</option>
+                                    <option>Electronics</option>
+                                    <option>Food items (non-perishable)</option>
+                                    <option>Household items</option>
+                                    <option>Other (specify below)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- parcel restriction note -->
+                        <div class="parcel-note">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span>We do <strong>not</strong> transport: Animals, Fertilizers, or any Explosives. Please confirm your parcel complies.</span>
+                        </div>
+
+                        <!-- parcel description -->
+                        <div class="form-group" style="margin-top: 1rem;">
+                            <label for="parcelDesc"><i class="fas fa-align-left"></i> Brief description (optional)</label>
+                            <textarea id="parcelDesc" placeholder="e.g. A small box of books..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- SENDER & RECEIVER -->
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            <i class="fas fa-address-book"></i> Sender & receiver
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="senderName"><i class="fas fa-user"></i> Sender's full name <span class="required-star">*</span></label>
+                                <input type="text" id="senderName" placeholder="e.g. John Kamau" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="senderId"><i class="fas fa-id-card"></i> Sender's ID number <span class="required-star">*</span></label>
+                                <input type="text" id="senderId" placeholder="e.g. 12345678" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="senderPhone"><i class="fas fa-phone-alt"></i> Sender's phone <span class="required-star">*</span></label>
+                                <input type="tel" id="senderPhone" placeholder="e.g. 0712 345 678" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="parcelValue"><i class="fas fa-coins"></i> Estimated value of parcel (Ksh) <span class="required-star">*</span></label>
+                                <input type="number" id="parcelValue" min="1" placeholder="e.g. 5000" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="receiverName"><i class="fas fa-user-friends"></i> Receiver's full name <span class="required-star">*</span></label>
+                                <input type="text" id="receiverName" placeholder="e.g. Mary Wanjiku" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="receiverId"><i class="fas fa-id-card"></i> Receiver's ID number <span class="required-star">*</span></label>
+                                <input type="text" id="receiverId" placeholder="e.g. 87654321" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="receiverPhone"><i class="fas fa-phone-alt"></i> Receiver's phone <span class="required-star">*</span></label>
+                                <input type="tel" id="receiverPhone" placeholder="e.g. 0722 987 654" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PARCEL PRICE SUMMARY -->
+                    <div class="price-summary">
+                        <div>
+                            <div class="label">Estimated delivery fee</div>
+                            <div class="price-note"><i class="fas fa-info-circle"></i> Base rate: Ksh 300 + Ksh 100 per kg</div>
+                        </div>
+                        <div class="amount" id="parcelPriceDisplay">Ksh 400</div>
+                    </div>
+                </div>
+
+                <!-- ACTION BUTTONS -->
+                <div class="action-buttons">
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        <i class="fas fa-check-circle"></i> <span id="submitBtnText">Book now</span>
+                    </button>
+                    <a href="Index.html" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to home
+                    </a>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h5><i class="fas fa-bus"></i> NAEKANA SACCO</h5>
+                <ul>
+                    <li><a href="About.html"><i class="fas fa-angle-right"></i> About us</a></li>
+                    <li><a href="Services.html"><i class="fas fa-angle-right"></i> Services</a></li>
+                    <li><a href="Payment.html"><i class="fas fa-angle-right"></i> Payment</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5><i class="fas fa-life-ring"></i> Support</h5>
+                <ul>
+                    <li><a href="Contact.html"><i class="fas fa-angle-right"></i> Contact</a></li>
+                    <li><a href="Help.html"><i class="fas fa-angle-right"></i> Help center</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5><i class="fas fa-map-pin"></i> Visit us</h5>
+                <ul>
+                    <li><i class="fas fa-location-dot"></i> Laset town, Route 134</li>
+                    <li><i class="fas fa-phone"></i> +254 700 123 456</li>
+                    <li><i class="fas fa-envelope"></i> info@naekana.co.ke</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p><i class="far fa-copyright"></i> 2025 Naekana Sacco — All rights reserved. Under Peter Saigilu management.</p>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================================
+        //  FARE MATRIX  (EDIT PRICES HERE — Ksh per seat)
+        //  Structure: FARE_MATRIX[departure][destination] = price
+        //  Add / remove towns as needed. Use "default" for fallback.
+        // ============================================================
+        const FARE_MATRIX = {
+            "Illasit": {
+                "Nairobi": 1000,
+                "Mombasa": 2500,
+                "Kajiado": 700,
+                "Isinya": 600,
+                "Namanga": 500,
+                "Loitoktok": 400,
+                "Kimana": 300,
+                "Emali": 700,
+                "Kitengela": 800,
+                "Himo": 1500,
+                "Moshi": 1800,
+                "Thika": 900,
+                "Isinet": 300,
+                "default": 1000
+            },
+            "Loitoktok": {
+                "Nairobi": 1100,
+                "Mombasa": 2500,
+                "Kajiado": 700,
+                "Isinya": 600,
+                "Namanga": 400,
+                "Illasit": 400,
+                "Kimana": 200,
+                "Emali": 700,
+                "Kitengela": 800,
+                "Himo": 1600,
+                "Moshi": 1800,
+                "Thika": 1000,
+                "Isinet": 200,
+                "default": 1000
+            },
+            "Kimana": {
+                "Nairobi": 1200,
+                "Mombasa": 2600,
+                "Kajiado": 800,
+                "Isinya": 700,
+                "Namanga": 500,
+                "Illasit": 300,
+                "Loitoktok": 200,
+                "Emali": 800,
+                "Kitengela": 900,
+                "Himo": 1600,
+                "Moshi": 1800,
+                "Thika": 1000,
+                "Isinet": 250,
+                "default": 1000
+            },
+            "Isinet": {
+                "Nairobi": 1000,
+                "Mombasa": 2500,
+                "Kajiado": 600,
+                "Isinya": 500,
+                "Namanga": 400,
+                "Illasit": 300,
+                "Loitoktok": 200,
+                "Kimana": 250,
+                "Emali": 700,
+                "Kitengela": 800,
+                "Himo": 1500,
+                "Moshi": 1700,
+                "Thika": 900,
+                "default": 1000
+            },
+            "Isinya": {
+                "Nairobi": 500,
+                "Mombasa": 2000,
+                "Kajiado": 300,
+                "Namanga": 500,
+                "Illasit": 600,
+                "Loitoktok": 600,
+                "Kimana": 700,
+                "Isinet": 500,
+                "Emali": 600,
+                "Kitengela": 200,
+                "Himo": 1400,
+                "Moshi": 1600,
+                "Thika": 500,
+                "default": 800
+            },
+            "Kitengela": {
+                "Nairobi": 400,
+                "Mombasa": 2000,
+                "Kajiado": 300,
+                "Isinya": 200,
+                "Namanga": 600,
+                "Illasit": 800,
+                "Loitoktok": 800,
+                "Kimana": 900,
+                "Isinet": 800,
+                "Emali": 500,
+                "Himo": 1400,
+                "Moshi": 1600,
+                "Thika": 400,
+                "default": 800
+            },
+            "Namanga": {
+                "Nairobi": 700,
+                "Mombasa": 2200,
+                "Kajiado": 300,
+                "Isinya": 500,
+                "Illasit": 500,
+                "Loitoktok": 400,
+                "Kimana": 500,
+                "Isinet": 400,
+                "Emali": 500,
+                "Kitengela": 600,
+                "Himo": 1500,
+                "Moshi": 1700,
+                "Thika": 600,
+                "default": 800
+            },
+            "Mombasa": {
+                "Nairobi": 1500,
+                "Illasit": 2500,
+                "Loitoktok": 2500,
+                "Kimana": 2600,
+                "Isinet": 2500,
+                "Isinya": 2000,
+                "Kitengela": 2000,
+                "Namanga": 2200,
+                "Emali": 1500,
+                "Himo": 800,
+                "Moshi": 1000,
+                "Thika": 1600,
+                "default": 2000
+            },
+            "Moshi": {
+                "Nairobi": 1800,
+                "Illasit": 1800,
+                "Loitoktok": 1800,
+                "Kimana": 1800,
+                "Isinet": 1700,
+                "Isinya": 1600,
+                "Kitengela": 1600,
+                "Namanga": 1700,
+                "Emali": 1500,
+                "Mombasa": 1000,
+                "Himo": 300,
+                "Thika": 1700,
+                "default": 1800
+            },
+            "Himo": {
+                "Nairobi": 1800,
+                "Illasit": 1500,
+                "Loitoktok": 1600,
+                "Kimana": 1600,
+                "Isinet": 1500,
+                "Isinya": 1400,
+                "Kitengela": 1400,
+                "Namanga": 1500,
+                "Emali": 1300,
+                "Mombasa": 800,
+                "Moshi": 300,
+                "Thika": 1500,
+                "default": 1500
+            },
+            "Thika": {
+                "Nairobi": 300,
+                "Illasit": 900,
+                "Loitoktok": 1000,
+                "Kimana": 1000,
+                "Isinet": 900,
+                "Isinya": 500,
+                "Kitengela": 400,
+                "Namanga": 600,
+                "Emali": 500,
+                "Mombasa": 1600,
+                "Himo": 1500,
+                "Moshi": 1700,
+                "default": 900
+            },
+            "Emali": {
+                "Nairobi": 500,
+                "Illasit": 700,
+                "Loitoktok": 700,
+                "Kimana": 800,
+                "Isinet": 700,
+                "Isinya": 600,
+                "Kitengela": 500,
+                "Namanga": 500,
+                "Mombasa": 1500,
+                "Himo": 1300,
+                "Moshi": 1500,
+                "Thika": 500,
+                "default": 700
+            }
+        };
+
+        // ============================================================
+        //  PARCEL PRICING (base + per kg)
+        // ============================================================
+        const PARCEL_BASE = 300;
+        const PARCEL_PER_KG = 100;
+
+        // ============================================================
+        //  UTILITIES
+        // ============================================================
+        function getFare(departure, destination) {
+            if (!departure || !destination) return 0;
+            const row = FARE_MATRIX[departure];
+            if (!row) return 0;
+            if (row[destination] !== undefined) return row[destination];
+            if (row["default"] !== undefined) return row["default"];
+            return 1000; // global fallback
+        }
+
+        function formatKsh(n) {
+            return 'Ksh ' + Number(n).toLocaleString();
+        }
+
+        // Build the fare table (for the <details> panel)
+        function buildFareTable() {
+            const grid = document.getElementById('fareGrid');
+            if (!grid) return;
+            const towns = Object.keys(FARE_MATRIX);
+            let html = '';
+            towns.forEach(dep => {
+                const dests = Object.keys(FARE_MATRIX[dep]).filter(d => d !== 'default');
+                dests.forEach(dest => {
+                    html += `<span>${dep} → ${dest} <strong>Ksh ${FARE_MATRIX[dep][dest].toLocaleString()}</strong></span>`;
+                });
+            });
+            grid.innerHTML = html || '<span>No fares configured.</span>';
+        }
+
+        // ============================================================
+        //  MODE SWITCHING
+        // ============================================================
+        let currentMode = 'passenger';
+
+        function switchMode(mode) {
+            currentMode = mode;
+            const passengerForm = document.getElementById('passengerForm');
+            const parcelForm = document.getElementById('parcelForm');
+            const btnPassenger = document.getElementById('btnPassenger');
+            const btnParcel = document.getElementById('btnParcel');
+            const infoText = document.getElementById('infoText');
+            const submitBtnText = document.getElementById('submitBtnText');
+
+            if (mode === 'passenger') {
+                passengerForm.classList.remove('hidden');
+                parcelForm.classList.add('hidden');
+                btnPassenger.classList.add('active');
+                btnParcel.classList.remove('active');
+                infoText.textContent = 'Please select your travel details below. All bookings are subject to availability. Payment confirms your seat.';
+                submitBtnText.textContent = 'Book now';
+                updatePrice();
+            } else {
+                passengerForm.classList.add('hidden');
+                parcelForm.classList.remove('hidden');
+                btnParcel.classList.add('active');
+                btnPassenger.classList.remove('active');
+                infoText.textContent = 'Fill in the parcel details below. ID numbers and estimated value are mandatory for all parcels.';
+                submitBtnText.textContent = 'Send parcel';
+                updateParcelPrice();
+            }
+        }
+
+        // ============================================================
+        //  PASSENGER PRICE (dynamic by route)
+        // ============================================================
+        function updatePrice() {
+            const dep = document.getElementById('departure').value;
+            const dest = document.getElementById('destination').value;
+            const seats = parseInt(document.getElementById('seats').value) || 1;
+            const farePerSeat = getFare(dep, dest);
+            const total = farePerSeat * seats;
+            const note = document.getElementById('fareNote');
+
+            if (dep && dest) {
+                note.innerHTML = `<i class="fas fa-info-circle"></i> Fare: ${formatKsh(farePerSeat)} per seat (${dep} → ${dest})`;
+                document.getElementById('priceDisplay').innerHTML = formatKsh(total);
+            } else {
+                note.innerHTML = `<i class="fas fa-info-circle"></i> Select departure and destination to see fare`;
+                document.getElementById('priceDisplay').innerHTML = 'Ksh 0';
+            }
+        }
+
+        // ============================================================
+        //  PARCEL PRICE
+        // ============================================================
+        function updateParcelPrice() {
+            const weight = parseFloat(document.getElementById('parcelWeight').value) || 1;
+            const total = PARCEL_BASE + (PARCEL_PER_KG * weight);
+            document.getElementById('parcelPriceDisplay').innerHTML = formatKsh(total);
+        }
+
+        // ============================================================
+        //  LISTENERS
+        // ============================================================
+        document.getElementById('seats').addEventListener('change', updatePrice);
+        document.getElementById('departure').addEventListener('change', updatePrice);
+        document.getElementById('destination').addEventListener('change', updatePrice);
+        document.getElementById('parcelWeight').addEventListener('input', updateParcelPrice);
+        document.getElementById('parcelFrom').addEventListener('change', updateParcelPrice);
+        document.getElementById('parcelTo').addEventListener('change', updateParcelPrice);
+
+        // ============================================================
+        //  INIT
+        // ============================================================
+        window.addEventListener('load', () => {
+            buildFareTable();
+            updatePrice();
+            updateParcelPrice();
+        });
+
+        // ============================================================
+        //  SUBMIT
+        // ============================================================
+        function submitForm() {
+            if (currentMode === 'passenger') {
+                submitPassenger();
+            } else {
+                submitParcel();
+            }
+        }
+
+        function submitPassenger() {
+            const dep = document.getElementById('departure').value;
+            const dest = document.getElementById('destination').value;
+            const time = document.getElementById('departureTime').value;
+            const seats = document.getElementById('seats').value;
+            const name = document.getElementById('fullName').value;
+            const passengerId = document.getElementById('passengerId').value;
+            const phone = document.getElementById('phone').value;
+
+            if (!dep || !dest || !time || !seats || !name || !passengerId || !phone) {
+                alert('Please fill in all required fields before booking, including your ID number.');
+                return;
+            }
+
+            const farePerSeat = getFare(dep, dest);
+            const totalFare = farePerSeat * parseInt(seats);
+            alert(`✅ Booking request received!\n\n` +
+                  `Passenger: ${name}\n` +
+                  `ID Number: ${passengerId}\n` +
+                  `Phone: ${phone}\n` +
+                  `From: ${dep} → ${dest}\n` +
+                  `Departure: ${time}\n` +
+                  `Seats: ${seats}\n` +
+                  `Fare per seat: ${formatKsh(farePerSeat)}\n` +
+                  `Total fare: ${formatKsh(totalFare)}\n\n` +
+                  `We will contact you shortly to confirm payment and seat allocation.\n` +
+                  `Thank you for choosing Naekana Sacco!`);
+        }
+
+        function submitParcel() {
+            const from = document.getElementById('parcelFrom').value;
+            const to = document.getElementById('parcelTo').value;
+            const weight = document.getElementById('parcelWeight').value;
+            const type = document.getElementById('parcelType').value;
+            const desc = document.getElementById('parcelDesc').value;
+            const senderName = document.getElementById('senderName').value;
+            const senderId = document.getElementById('senderId').value;
+            const senderPhone = document.getElementById('senderPhone').value;
+            const parcelValue = document.getElementById('parcelValue').value;
+            const receiverName = document.getElementById('receiverName').value;
+            const receiverId = document.getElementById('receiverId').value;
+            const receiverPhone = document.getElementById('receiverPhone').value;
+
+            if (!from || !to || !weight || !type || !senderName || !senderId || !senderPhone || !parcelValue || !receiverName || !receiverId || !receiverPhone) {
+                alert('Please fill in all required parcel fields, including both ID numbers and estimated value.');
+                return;
+            }
+
+            const total = PARCEL_BASE + (PARCEL_PER_KG * parseFloat(weight));
+            alert(`✅ Parcel request received!\n\n` +
+                  `From: ${from} → ${to}\n` +
+                  `Weight: ${weight} kg\n` +
+                  `Type: ${type}\n` +
+                  (desc ? `Description: ${desc}\n` : '') +
+                  `Sender: ${senderName} (ID: ${senderId}, Phone: ${senderPhone})\n` +
+                  `Estimated value: Ksh ${parseFloat(parcelValue).toLocaleString()}\n` +
+                  `Receiver: ${receiverName} (ID: ${receiverId}, Phone: ${receiverPhone})\n` +
+                  `Estimated fee: ${formatKsh(total)}\n\n` +
+                  `Our team will contact you to confirm pickup and payment.\n` +
+                  `Thank you for using Naekana Courier!`);
+        }
+    </script>
+</body>
+</html>

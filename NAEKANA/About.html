@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naekana Sacco · About Us</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f5f0;
+            color: #1e2b1e;
+            line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ---------- HEADER ---------- */
+        .header {
+            background: linear-gradient(135deg, #0b3b1f 0%, #1e6b34 100%);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 8px 20px rgba(0, 40, 0, 0.15);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-placeholder {
+            background: #f5c542;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.6rem;
+            color: #0b3b1f;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border: 2px solid #ffe28a;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .logo-text .subhead {
+            font-size: 0.8rem;
+            font-weight: 400;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .subhead i {
+            font-size: 0.7rem;
+            color: #f5c542;
+        }
+
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.4rem 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-menu a i {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .nav-menu a:hover {
+            border-bottom-color: #f5c542;
+            color: #f5c542;
+        }
+
+        /* ---------- MAIN CONTENT ---------- */
+        .page-wrapper {
+            max-width: 1100px;
+            margin: 2rem auto 3rem auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+
+        .page-title {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #0b3b1f;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .page-title i {
+            color: #1e6b34;
+        }
+
+        .page-subtitle {
+            font-size: 1.15rem;
+            color: #3d5a3d;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #e4f0e4;
+            padding: 0.8rem 1.4rem;
+            border-radius: 60px;
+            width: fit-content;
+        }
+
+        .page-subtitle i {
+            color: #1e6b34;
+        }
+
+        /* content cards */
+        .content-card {
+            background: white;
+            border-radius: 32px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 15px 30px -10px rgba(0, 60, 0, 0.1);
+            border: 1px solid #d9e8d9;
+            transition: 0.2s ease;
+        }
+
+        .content-card:hover {
+            box-shadow: 0 22px 35px -10px rgba(0, 60, 0, 0.18);
+        }
+
+        .content-card h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0b3b1f;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border-bottom: 3px solid #e4f0e4;
+            padding-bottom: 0.8rem;
+        }
+
+        .content-card h2 i {
+            color: #1e6b34;
+            font-size: 1.6rem;
+        }
+
+        .content-card p {
+            font-size: 1.05rem;
+            color: #2a3f2a;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        /* timeline / highlights */
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+
+        .highlight-item {
+            background: #f2faf2;
+            border-radius: 20px;
+            padding: 1.2rem 1.4rem;
+            border: 1px solid #d0e8d0;
+            text-align: center;
+            transition: 0.2s;
+        }
+
+        .highlight-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 18px -6px rgba(0, 60, 0, 0.12);
+        }
+
+        .highlight-item i {
+            font-size: 1.8rem;
+            color: #1e6b34;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .highlight-item .number {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #0b3b1f;
+            line-height: 1.2;
+        }
+
+        .highlight-item .label {
+            font-size: 0.85rem;
+            color: #4a6a4a;
+            font-weight: 500;
+        }
+
+        /* fleet image placeholder */
+        .fleet-image {
+            background: linear-gradient(135deg, #1e3d1e 0%, #2a6b3a 100%);
+            border-radius: 24px;
+            height: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin: 1.5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fleet-image i {
+            font-size: 4rem;
+            color: #f5c542;
+            opacity: 0.9;
+            margin-bottom: 0.8rem;
+        }
+
+        .fleet-image span {
+            font-size: 1rem;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        .fleet-image .badge {
+            position: absolute;
+            top: 1.2rem;
+            right: 1.2rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        /* management grid */
+        .management-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        .member-card {
+            background: #f7fdf7;
+            border-radius: 20px;
+            padding: 1.4rem;
+            border: 1px solid #d9e8d9;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: 0.2s;
+        }
+
+        .member-card:hover {
+            background: #f0faf0;
+            border-color: #a0c0a0;
+            transform: translateY(-2px);
+        }
+
+        .member-avatar {
+            background: #1e6b34;
+            color: white;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .member-info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #0b3b1f;
+            margin-bottom: 0.15rem;
+        }
+
+        .member-info p {
+            font-size: 0.85rem;
+            color: #4a6a4a;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .member-info .role-badge {
+            display: inline-block;
+            background: #e4f0e4;
+            color: #1e6b34;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.2rem 0.7rem;
+            border-radius: 20px;
+            margin-top: 0.3rem;
+        }
+
+        /* CTA */
+        .cta-box {
+            background: #1e3d1e;
+            border-radius: 32px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            background-image: radial-gradient(circle at 20% 30%, #2a5e2a 0%, #0e2b0e 100%);
+        }
+
+        .cta-box h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cta-box h3 i {
+            color: #f5c542;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 1rem 2.5rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            text-decoration: none;
+            transition: 0.25s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: #f5c542;
+            color: #1e3d1e;
+            box-shadow: 0 10px 20px -5px rgba(245, 197, 66, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: #ffd95c;
+            transform: translateY(-3px);
+            box-shadow: 0 16px 28px -6px rgba(245, 197, 66, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border-color: white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* footer */
+        .footer {
+            background: #0a1f0a;
+            color: #e0f0e0;
+            padding: 2.5rem 2rem 1.5rem 2rem;
+            margin-top: auto;
+            border-top: 6px solid #f5c542;
+        }
+
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .footer-col h5 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #f5c542;
+            font-weight: 600;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-col a {
+            color: #c8e0c8;
+            text-decoration: none;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-col a:hover {
+            color: #f5c542;
+            transform: translateX(4px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #2a4a2a;
+            font-size: 0.9rem;
+            color: #a0b8a0;
+        }
+
+        .footer-bottom i {
+            color: #f5c542;
+        }
+
+        /* responsive */
+        @media (max-width: 750px) {
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .nav-menu ul {
+                justify-content: center;
+                gap: 1.3rem;
+            }
+
+            .logo-area {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .content-card {
+                padding: 1.5rem;
+            }
+
+            .cta-box {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo-area">
+            <div class="logo-placeholder">N</div>
+            <div class="logo-text">
+                <h1>NAEKANA SACCO</h1>
+                <div class="subhead">
+                    <i class="fas fa-bus"></i> Under Peter Saigilu management
+                </div>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="Index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="Services.html"><i class="fas fa-cogs"></i> Services</a></li>
+                <li><a href="About.html"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="Payment.html"><i class="fas fa-credit-card"></i> Payment</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="page-wrapper">
+
+        <h1 class="page-title">
+            <i class="fas fa-info-circle"></i> About Naekana Sacco
+        </h1>
+
+        <div class="page-subtitle">
+            <i class="fas fa-star"></i> Leading light in transport and logistics since the 1970s
+        </div>
+
+        <!-- HISTORY -->
+        <div class="content-card">
+            <h2><i class="fas fa-history"></i> Our History</h2>
+            <p>Naekana Route 134 Sacco Society Limited, popularly known as <strong>Naekana Sacco</strong>, is a Kenyan public service transport company. The company is one of the longest-serving matatu operators in the country, having been in operation for more than <strong>4 decades</strong>.</p>
+            <p>A trip to downtown Nairobi near OTC, one would not miss the long line of white vehicles with blue and orange stripes offloading passengers while others take off.</p>
+            <p>Naekana Route 134 Sacco Society Limited was founded in the <strong>1970s</strong>. Initially, it operated Peugeot 504 station wagons. In the <strong>1990s</strong>, a group of members formed an organization called <em>Namanga Nissan Services</em> operating Nissan QD's. In early 2000, a group of 27 members came up with the idea of forming the Sacco, and on <strong>November 23, 2003</strong>, it was officially registered as Naekana Route 134 Sacco Society Limited under the Ministry of Marketing and Co-operative Development.</p>
+            <p>Today, the Sacco has a fleet of over <strong>260 vehicles</strong>.</p>
+
+            <div class="highlight-grid">
+                <div class="highlight-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <div class="number">1970s</div>
+                    <div class="label">Founded</div>
+                </div>
+                <div class="highlight-item">
+                    <i class="fas fa-file-signature"></i>
+                    <div class="number">2003</div>
+                    <div class="label">Officially registered</div>
+                </div>
+                <div class="highlight-item">
+                    <i class="fas fa-bus"></i>
+                    <div class="number">260+</div>
+                    <div class="label">Vehicles in fleet</div>
+                </div>
+                <div class="highlight-item">
+                    <i class="fas fa-users"></i>
+                    <div class="number">27</div>
+                    <div class="label">Founding members</div>
+                </div>
+            </div>
+
+            <!-- fleet image placeholder -->
+            <div class="fleet-image">
+                <div class="badge"><i class="fas fa-camera"></i> Naekana Fleet</div>
+                <i class="fas fa-bus-alt"></i>
+                <span>Our modern fleet at the Nairobi terminal</span>
+            </div>
+        </div>
+
+        <!-- MANAGEMENT -->
+        <div class="content-card">
+            <h2><i class="fas fa-users-cog"></i> Management Team</h2>
+            <p>The Sacco is managed by a team of <strong>7 board members</strong> and a <strong>Chief Executive Officer</strong>.</p>
+
+            <div class="management-grid">
+                <div class="member-card">
+                    <div class="member-avatar">JI</div>
+                    <div class="member-info">
+                        <h4>Joseph Ireri</h4>
+                        <p>Chief Executive Officer</p>
+                        <span class="role-badge">CEO</span>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">PM</div>
+                    <div class="member-info">
+                        <h4>Paul M. Matampash</h4>
+                        <p>Chairman</p>
+                        <span class="role-badge">Board</span>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">NN</div>
+                    <div class="member-info">
+                        <h4>Nancy W. Ngondi</h4>
+                        <p>Secretary</p>
+                        <span class="role-badge">Board</span>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">JC</div>
+                    <div class="member-info">
+                        <h4>John M. Chege</h4>
+                        <p>Treasurer</p>
+                        <span class="role-badge">Board</span>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">PM</div>
+                    <div class="member-info">
+                        <h4>Paul M. Murua</h4>
+                        <p>Chairperson, Credit Committee</p>
+                        <span class="role-badge">Committee</span>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">DD</div>
+                    <div class="member-info">
+                        <h4>Daniel L. David</h4>
+                        <p>Secretary, Credit Committee</p>
+                        <span class="role-badge">Committee</span>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">PM</div>
+                    <div class="member-info">
+                        <h4>Phillip J. Mwaura</h4>
+                        <p>Member, Credit Committee</p>
+                        <span class="role-badge">Committee</span>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar">BT</div>
+                    <div class="member-info">
+                        <h4>Benson M. Timothy</h4>
+                        <p>Board Member</p>
+                        <span class="role-badge">Board</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-box">
+            <h3><i class="fas fa-headset"></i> Want to travel with us or send a parcel?</h3>
+            <a href="Payment.html" class="btn btn-primary"><i class="fas fa-ticket-alt"></i> Book now</a>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h5><i class="fas fa-bus"></i> NAEKANA SACCO</h5>
+                <ul>
+                    <li><a href="About.html"><i class="fas fa-angle-right"></i> About us</a></li>
+                    <li><a href="Services.html"><i class="fas fa-angle-right"></i> Services</a></li>
+                    <li><a href="Payment.html"><i class="fas fa-angle-right"></i> Payment</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5><i class="fas fa-life-ring"></i> Support</h5>
+                <ul>
+                    <li><a href="Contact.html"><i class="fas fa-angle-right"></i> Contact</a></li>
+                    <li><a href="Help.html"><i class="fas fa-angle-right"></i> Help center</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right"></i> FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5><i class="fas fa-map-pin"></i> Visit us</h5>
+                <ul>
+                    <li><i class="fas fa-location-dot"></i> Laset town, Route 134</li>
+                    <li><i class="fas fa-phone"></i> +254 700 123 456</li>
+                    <li><i class="fas fa-envelope"></i> info@naekana.co.ke</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p><i class="far fa-copyright"></i> 2025 Naekana Sacco — All rights reserved. Under Peter Saigilu management.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
